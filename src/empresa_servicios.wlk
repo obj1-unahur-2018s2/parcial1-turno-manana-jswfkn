@@ -38,5 +38,9 @@ class EmpresaServicios {
 		
 	}
 	
+	method cuantosEstudiaronEn(_universidad){
+		return empresa.count{u=>u.universidad()==_universidad}
+	}
+	
 	
 }

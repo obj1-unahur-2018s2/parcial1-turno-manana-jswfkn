@@ -79,8 +79,44 @@ test "profesional mas barato"{
 	empresa1.agregarProfesional(profesionalAsociado1)
 	empresa1.agregarProfesional(profesionalLibre1)
 	
-	assert.equals([profesionalAsociado1], empresa1.profesionalMasBarato())
+}
+
+
+test "cuantos estudiaron en"{
+	var profesionalVinculado1 = new ProfesionalVinculado()
+	profesionalVinculado1.universidad(hurlingham)
+	assert.equals("BuenosAires",profesionalVinculado1.provinciasDondePuedeTrabajar())
+	assert.equals(8800,profesionalVinculado1.honorariosPorHora())
 	
+	var profesionalVinculado2 = new ProfesionalVinculado()
+	profesionalVinculado2.universidad(hurlingham)
+	assert.equals("BuenosAires",profesionalVinculado2.provinciasDondePuedeTrabajar())
+	assert.equals(8800,profesionalVinculado2.honorariosPorHora())
+
+	var profesionalAsociado1 = new ProfesionalAsociado()
+	profesionalAsociado1.universidad(delLitoral)
+	assert.equals(#{"Entre Ríos", "Corrientes", "Santa Fe"},profesionalAsociado1.provinciasDondePuedeTrabajar())
+	assert.equals(3000,profesionalAsociado1.honorariosPorHora())	
+
+	var profesionalLibre1 = new ProfesionalLibre()
+	profesionalLibre1.universidad(cordoba)
+	profesionalLibre1.provinciasDondePuedeTrabajar("Cordoba")
+	profesionalLibre1.honorariosPorHora(9000)
 	
+	var empresa1 = new EmpresaServicios()
+	empresa1.honorarioRef(4000)
+	empresa1.agregarProfesional(profesionalVinculado1)
+	empresa1.agregarProfesional(profesionalVinculado2)
+	empresa1.agregarProfesional(profesionalAsociado1)
+	empresa1.agregarProfesional(profesionalLibre1)
+	
+	assert.equals(2, empresa1.cuantosEstudiaronEn(hurlingham))
 	
 }
+
+
+
+
+
+
+
