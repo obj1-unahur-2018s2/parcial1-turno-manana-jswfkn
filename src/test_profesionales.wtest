@@ -1,0 +1,32 @@
+import profesionales.*
+import universidades.*
+
+test "profesional vinculado" {
+	var profesionalVinculado1 = new ProfesionalVinculado()
+	
+	profesionalVinculado1.universidad(hurlingham)
+	assert.equals("BuenosAires",profesionalVinculado1.provinciasDondePuedeTrabajar())
+	assert.equals(8800,profesionalVinculado1.honorariosPorHora())
+}
+
+test "profesional asociado"{
+	var profesionalAsociado1 = new ProfesionalAsociado()
+	
+	profesionalAsociado1.universidad(delLitoral)
+	assert.equals(#{"Entre Ríos", "Corrientes", "Santa Fe"},profesionalAsociado1.provinciasDondePuedeTrabajar())
+	assert.equals(3000,profesionalAsociado1.honorariosPorHora())	
+}
+
+test "profesional libre"{
+	var profesionalLibre1 = new ProfesionalLibre()
+	
+	
+	profesionalLibre1.universidad("cordoba")
+	profesionalLibre1.provinciasDondePuedeTrabajar("Cordoba")
+	profesionalLibre1.honorariosPorHora(9000)
+	
+	assert.equals("Cordoba",profesionalLibre1.provinciasDondePuedeTrabajar())
+	assert.equals(9000,profesionalLibre1.honorariosPorHora())
+	
+	
+}
